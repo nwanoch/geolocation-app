@@ -27,8 +27,7 @@ function BottomDiv() {
             margin: "30px auto 5px",
           }}
         >
-          Log <br />
-          In
+          Forgot <br /> Password
         </h1>
         <form action="">
           {" "}

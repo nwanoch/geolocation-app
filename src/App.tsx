@@ -28,6 +28,7 @@ import "./theme/variables.css";
 import Welcome from "./pages/welcome/Welcome";
 import SignUp from "./pages/SignUp/SignUp";
 import SignIn from "./pages/SignIn/SignIn";
+import Forgot from "./pages/Forgot/Forgot";
 
 const App: React.FC = () => {
   return (
@@ -39,7 +40,8 @@ const App: React.FC = () => {
             <Route path="/" exact={true}>
               {/* <Welcome/> */}
               {/* <SignUp /> */}
-              <SignIn />
+              {/* <SignIn /> */}
+              <Forgot />
               {/* <Redirect to="/login" /> */}
             </Route>
             <Route path="/page/:name" exact={true}>

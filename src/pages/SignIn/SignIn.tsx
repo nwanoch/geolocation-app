@@ -1,16 +1,16 @@
-import React from 'react'
-import BottomDiv from "../../components/SignUpComponents/BottomDiv/BottomDiv";
-import Greeting from "../../components/SignUpComponents/Greeting/Greeting";
-import LogoDIv from "../../components/SignUpComponents/LogoDIv/LogoDIv";
+import React from "react";
+import BottomDiv from "../../components/SignInComponents/BottomDiv/BottomDiv";
+import Greeting from "../../components/SignInComponents/Greeting/Greeting";
+import LogoDIv from "../../components/SignInComponents/LogoDIv/LogoDIv";
 
 function SignIn() {
-    return (
-      <div>
-        <Greeting />
-        <LogoDIv />
-        <BottomDiv />
-      </div>
-    );
+  return (
+    <div>
+      <Greeting />
+      <LogoDIv />
+      <BottomDiv />
+    </div>
+  );
 }
 
-export default SignIn
+export default SignIn;

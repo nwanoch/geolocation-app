@@ -27,8 +27,8 @@ function BottomDiv() {
             margin: "30px auto 5px",
           }}
         >
-          Sign <br />
-          Up
+          Log <br />
+          In
         </h1>
         <IonItem
           lines="none"
@@ -44,7 +44,7 @@ function BottomDiv() {
             }}
             position="floating"
           >
-            Choose Username
+            Enter Username
           </IonLabel>
           <IonInput
             style={{
@@ -65,7 +65,7 @@ function BottomDiv() {
             }}
             position="floating"
           >
-            Choose Password
+            Enter Password
           </IonLabel>
           <IonInput
             style={{
@@ -74,31 +74,25 @@ function BottomDiv() {
               marginBottom: "5px",
             }}
             type="password"
-            value=""
-          ></IonInput>
-        </IonItem>{" "}
-        <IonItem lines="none" color="backgroundColor">
-          <IonLabel
-            style={{
-              color: "#fff",
-              fontWeight: "400",
-              fontFamily: "'Helvetica 55 Roman', sans-serif",
-              fontSize: "14px",
-            }}
-            position="floating"
-          >
-            Confirm Password
-          </IonLabel>
-          <IonInput
-            type="password"
-            style={{
-              color: "#fff",
-              borderBottom: "1px solid white",
-              marginBottom: "40px",
-            }}
             value=""
           ></IonInput>
         </IonItem>
+        <button
+          style={{
+            background: "none",
+            color: "#fff",
+            width: "100%",
+            border: "none",
+            padding: "18px",
+            fontSize: "12px",
+            display: "block",
+            fontFamily: "'Helvetica 55 Roman', sans-serif",
+            textAlign: "right",
+            margin: "20px",
+          }}
+        >
+          Don’t have an account? Sign Up
+        </button>
         <div style={{ textAlign: "center", width: "100%" }}>
           <button
             style={{
@@ -112,20 +106,22 @@ function BottomDiv() {
               margin: "auto",
             }}
           >
-            Sign up
+            Sign In
           </button>{" "}
           <button
             style={{
               background: "none",
               color: "#fff",
+              width: "100%",
               border: "none",
               padding: "18px",
               fontSize: "12px",
               display: "block",
-              fontWeight: 300,
+              fontFamily: "'Helvetica 55 Roman', sans-serif",
+              textAlign: "center",
             }}
           >
-            Have an account Already? Sign in
+            Don’t have an account? Sign Up
           </button>
         </div>
       </div>

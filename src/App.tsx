@@ -23,6 +23,11 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
+//components
+
+import Welcome from "./pages/welcome/Welcome"
+import SignUp from './pages/SignUp/SignUp';
+
 const App: React.FC = () => {
   return (
     <IonApp>
@@ -31,7 +36,9 @@ const App: React.FC = () => {
           <Menu />
           <IonRouterOutlet id="main">
             <Route path="/" exact={true}>
-              <Redirect to="/page/Inbox" />
+              {/* <Welcome/> */}
+              <SignUp />
+              {/* <Redirect to="/login" /> */}
             </Route>
             <Route path="/page/:name" exact={true}>
               <Page />

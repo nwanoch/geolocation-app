@@ -30,84 +30,57 @@ function BottomDiv() {
           Log <br />
           In
         </h1>
-        <IonItem
-          lines="none"
-          color="backgroundColor"
-          style={{ padding: "0", margin: "0" }}
-        >
-          <IonLabel
-            style={{
-              color: "#fff",
-              fontWeight: "400",
-              fontFamily: "'Helvetica 55 Roman', sans-serif",
-              fontSize: "14px",
-            }}
-            position="floating"
+        <form action="">
+          {" "}
+          <IonItem
+            lines="none"
+            color="backgroundColor"
+            style={{ padding: "0", margin: "0" }}
           >
-            Enter Username
-          </IonLabel>
-          <IonInput
-            style={{
-              color: "#fff",
-              borderBottom: "1px solid white",
-              marginBottom: "5px",
-            }}
-            value=""
-          ></IonInput>
-        </IonItem>{" "}
-        <IonItem lines="none" color="backgroundColor">
-          <IonLabel
-            style={{
-              color: "#fff",
-              fontWeight: "400",
-              fontFamily: "'Helvetica 55 Roman', sans-serif",
-              fontSize: "14px",
-            }}
-            position="floating"
-          >
-            Enter Password
-          </IonLabel>
-          <IonInput
-            style={{
-              color: "#fff",
-              borderBottom: "1px solid white",
-              marginBottom: "5px",
-            }}
-            type="password"
-            value=""
-          ></IonInput>
-        </IonItem>
-        <button
-          style={{
-            background: "none",
-            color: "#fff",
-            width: "100%",
-            border: "none",
-            padding: "18px",
-            fontSize: "12px",
-            display: "block",
-            fontFamily: "'Helvetica 55 Roman', sans-serif",
-            textAlign: "right",
-            margin: "20px",
-          }}
-        >
-          Don’t have an account? Sign Up
-        </button>
-        <div style={{ textAlign: "center", width: "100%" }}>
-          <button
-            style={{
-              backgroundColor: "#fff",
-              color: "#254159",
-              border: "none",
-              borderRadius: "25px",
-              padding: "18px 70px",
-              fontSize: "12px",
-              display: "block",
-              margin: "auto",
-            }}
-          >
-            Sign In
-          </button>{" "}
+            <IonLabel
+              style={{
+                color: "#fff",
+                fontWeight: "400",
+                fontFamily: "'Helvetica 55 Roman', sans-serif",
+                fontSize: "14px",
+              }}
+              position="floating"
+            >
+              Enter Username
+            </IonLabel>
+            <IonInput
+              autocomplete="off"
+              style={{
+                color: "#fff",
+                borderBottom: "1px solid white",
+                marginBottom: "5px",
+              }}
+              value=""
+            ></IonInput>
+          </IonItem>{" "}
+          <IonItem lines="none" color="backgroundColor">
+            <IonLabel
+              style={{
+                color: "#fff",
+                fontWeight: "400",
+                fontFamily: "'Helvetica 55 Roman', sans-serif",
+                fontSize: "14px",
+              }}
+              position="floating"
+            >
+              Enter Password
+            </IonLabel>
+            <IonInput
+              autocomplete="off"
+              style={{
+                color: "#fff",
+                borderBottom: "1px solid white",
+                marginBottom: "5px",
+              }}
+              type="password"
+              value=""
+            ></IonInput>
+          </IonItem>
           <button
             style={{
               background: "none",
@@ -118,12 +91,44 @@ function BottomDiv() {
               fontSize: "12px",
               display: "block",
               fontFamily: "'Helvetica 55 Roman', sans-serif",
-              textAlign: "center",
+              textAlign: "right",
+              marginBottom: "20px",
             }}
           >
-            Don’t have an account? Sign Up
+            Forgot Password
           </button>
-        </div>
+          <div style={{ textAlign: "center", width: "100%" }}>
+            <button
+              style={{
+                backgroundColor: "#fff",
+                color: "#254159",
+                border: "none",
+                borderRadius: "25px",
+                padding: "18px 70px",
+                fontSize: "12px",
+                display: "block",
+                margin: "auto",
+              }}
+            >
+              Sign In
+            </button>{" "}
+            <button
+              style={{
+                background: "none",
+                color: "#fff",
+                width: "100%",
+                border: "none",
+                padding: "18px",
+                fontSize: "12px",
+                display: "block",
+                fontFamily: "'Helvetica 55 Roman', sans-serif",
+                textAlign: "center",
+              }}
+            >
+              Don’t have an account? Sign Up
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );

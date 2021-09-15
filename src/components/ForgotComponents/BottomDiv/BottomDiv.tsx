@@ -104,11 +104,13 @@ function BottomDiv() {
                 color: "#fff",
                 width: "100%",
                 border: "none",
-                padding: "18px",
+                marginTop: "18px",
+                padding: "8px",
                 fontSize: "12px",
                 display: "block",
                 fontFamily: "'Helvetica 55 Roman', sans-serif",
                 textAlign: "center",
+                textDecoration: "none",
               }}
             >
               Don’t have an account? Sign Up

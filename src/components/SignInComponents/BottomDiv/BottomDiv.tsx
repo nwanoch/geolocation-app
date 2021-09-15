@@ -1,10 +1,12 @@
 import { IonButton, IonInput, IonItem, IonLabel } from "@ionic/react";
 import React from "react";
+import { Link } from "react-router-dom";
 import bottomDivImg from "../../../images/authimage.png";
 
-import "./bottom.css";
+
 function BottomDiv() {
-  const handleSign = () => {
+  const handleSign = (e: any) => {
+    e.preventDefault();
     console.log("signed in");
   };
   return (
@@ -84,7 +86,8 @@ function BottomDiv() {
               value=""
             ></IonInput>
           </IonItem>
-          <button
+          <Link
+            to="/forgot"
             style={{
               background: "none",
               color: "#fff",
@@ -96,10 +99,11 @@ function BottomDiv() {
               fontFamily: "'Helvetica 55 Roman', sans-serif",
               textAlign: "right",
               marginBottom: "20px",
+              textDecoration: "none",
             }}
           >
             Forgot Password
-          </button>
+          </Link>
           <div style={{ textAlign: "center", width: "100%" }}>
             <button
               onClick={handleSign}
@@ -116,7 +120,8 @@ function BottomDiv() {
             >
               Sign In
             </button>{" "}
-            <button
+            <Link
+              to="/signup"
               style={{
                 background: "none",
                 color: "#fff",
@@ -127,10 +132,11 @@ function BottomDiv() {
                 display: "block",
                 fontFamily: "'Helvetica 55 Roman', sans-serif",
                 textAlign: "center",
+                textDecoration: "none",
               }}
             >
               Don’t have an account? Sign Up
-            </button>
+            </Link>
           </div>
         </form>
       </div>

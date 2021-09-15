@@ -1,8 +1,12 @@
 import { IonButton, IonInput, IonItem, IonLabel } from "@ionic/react";
 import React from "react";
+import { Link } from "react-router-dom";
 import bottomDivImg from "../../../images/authimage.png";
-import "./bottom.css";
+
 function BottomDiv() {
+  const handleSignUp = (e: any) => {
+    e.preventDefault();
+  };
   return (
     <div
       style={{
@@ -101,6 +105,7 @@ function BottomDiv() {
         </IonItem>
         <div style={{ textAlign: "center", width: "100%" }}>
           <button
+            onClick={handleSignUp}
             style={{
               backgroundColor: "#fff",
               color: "#254159",
@@ -114,19 +119,22 @@ function BottomDiv() {
           >
             Sign up
           </button>{" "}
-          <button
+          <Link
+            to="login"
             style={{
+              textAlign: "center",
               background: "none",
               color: "#fff",
               border: "none",
               padding: "18px",
               fontSize: "12px",
               display: "block",
-              fontWeight: 300,
+              fontFamily: "'Helvetica 55 Roman', sans-serif",
+              textDecoration: "none",
             }}
           >
             Have an account Already? Sign in
-          </button>
+          </Link>
         </div>
       </div>
     </div>

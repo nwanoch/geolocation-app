@@ -1,6 +1,6 @@
 import { IonButtons, IonMenuButton } from "@ionic/react";
 import React from "react";
-import gislogo from "../../images/gislogo.png";
+import gislogo from "../../../images/gislogo.png";
 
 function Nav() {
   return (
@@ -14,6 +14,8 @@ function Nav() {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
+        position: "relative",
+        zIndex: 5,
       }}
     >
       <IonButtons slot="end">

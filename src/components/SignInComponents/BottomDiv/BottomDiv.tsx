@@ -1,8 +1,12 @@
 import { IonButton, IonInput, IonItem, IonLabel } from "@ionic/react";
 import React from "react";
 import bottomDivImg from "../../../images/authimage.png";
+
 import "./bottom.css";
 function BottomDiv() {
+  const handleSign = () => {
+    console.log("signed in");
+  };
   return (
     <div
       style={{
@@ -98,6 +102,7 @@ function BottomDiv() {
           </button>
           <div style={{ textAlign: "center", width: "100%" }}>
             <button
+              onClick={handleSign}
               style={{
                 backgroundColor: "#fff",
                 color: "#254159",

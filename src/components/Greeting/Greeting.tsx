@@ -1,18 +1,26 @@
 import React, { useEffect, useState } from "react";
 
 function Greeting() {
-  const [hour, setHour] = useState(0);
+  const [greet, setgreet] = useState("");
 
   useEffect(() => {
     const getHour = () => {
       const date = new Date();
-      var hours = date.getHours();
-      setHour(hours);
-    };
+      const hours = date.getHours();
 
+      if (hours < 12 && hours >= 0) {
+        setgreet("Good Morming");
+      } else if (hours > 11 && hours < 16) {
+        setgreet("Good Afternoon");
+      } else {
+        return setgreet("Good Evening");
+      }
+    };
+    function sayGreeting() {}
     getHour();
-    console.log(hour);
-  }, [hour]);
+    sayGreeting();
+  }, []);
+
   return (
     <div>
       <p
@@ -23,7 +31,7 @@ function Greeting() {
           padding: "30px",
         }}
       >
-        {hour <= 11 && hour >=0 ? `Good Morning` : hour >=12 && hour<=16? `Good Afternoon `: `Good evening`}
+        {greet}
       </p>
     </div>
   );

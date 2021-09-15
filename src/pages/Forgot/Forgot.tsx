@@ -1,7 +1,7 @@
 import React from "react";
 
 import BottomDiv from "../../components/ForgotComponents/BottomDiv/BottomDiv";
-import Greeting from "../../components/ForgotComponents/Greeting/Greeting";
+import Greeting from "../../components/Greeting/Greeting";
 import LogoDIv from "../../components/ForgotComponents/LogoDIv/LogoDIv";
 function Forgot() {
   return (

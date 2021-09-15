@@ -29,7 +29,6 @@ import Welcome from "./pages/welcome/Welcome";
 import SignUp from "./pages/SignUp/SignUp";
 import SignIn from "./pages/SignIn/SignIn";
 import Forgot from "./pages/Forgot/Forgot";
-import MainBoard from "./pages/MainBoard/MainBoard";
 
 const App: React.FC = () => {
   return (
@@ -39,12 +38,17 @@ const App: React.FC = () => {
           <Menu />
           <IonRouterOutlet id="main">
             <Route path="/" exact={true}>
-              {/* <Welcome/> */}
-              {/* <SignUp /> */}
-              {/* <SignIn /> */}
-              {/* <Forgot /> */}
-              <MainBoard />
-              {/* <Redirect to="/login" /> */}
+              <Welcome />
+            </Route>
+            <Route path="/signUp" exact={true}>
+              <SignUp />
+            </Route>
+
+            <Route path="/Login" exact={true}>
+              <SignIn />
+            </Route>
+            <Route path="/forgot" exact={true}>
+              <Forgot />
             </Route>
             <Route path="/page/:name" exact={true}>
               <Page />

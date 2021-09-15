@@ -1,5 +1,6 @@
 import { IonButton } from "@ionic/react";
 import React from "react";
+import { Link } from "react-router-dom";
 import bottomDivImg from "../../../images/authimage.png";
 function BottomDiv() {
   return (
@@ -26,10 +27,13 @@ function BottomDiv() {
         >
           Lets get started
         </h1>
-        <button
+        <Link
+          to="login"
           style={{
             backgroundColor: "#fff",
             color: "#254159",
+            display: "inline-block",
+            textDecoration: "none",
             border: "none",
             borderRadius: "25px",
             padding: "18px 70px",
@@ -37,7 +41,7 @@ function BottomDiv() {
           }}
         >
           Sign in
-        </button>
+        </Link>
         <p
           style={{
             margin: "10px auto 1px",
@@ -48,10 +52,13 @@ function BottomDiv() {
         >
           Or
         </p>
-        <button
+        <Link
+          to="signup"
           style={{
             backgroundColor: "#fff",
             color: "#254159",
+            display: "inline-block",
+            textDecoration: "none",
             border: "none",
             borderRadius: "25px",
             padding: "18px 70px",
@@ -59,7 +66,7 @@ function BottomDiv() {
           }}
         >
           Sign up
-        </button>
+        </Link>
       </div>
     </div>
   );

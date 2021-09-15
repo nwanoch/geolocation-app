@@ -1,6 +1,6 @@
 import React from "react";
 import BottomDiv from "../../components/SignInComponents/BottomDiv/BottomDiv";
-import Greeting from "../../components/SignInComponents/Greeting/Greeting";
+import Greeting from "../../components/Greeting/Greeting";
 import LogoDIv from "../../components/SignInComponents/LogoDIv/LogoDIv";
 
 function SignIn() {

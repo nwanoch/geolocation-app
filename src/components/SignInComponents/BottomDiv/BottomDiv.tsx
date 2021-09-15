@@ -1,12 +1,19 @@
-import { IonButton, IonInput, IonItem, IonLabel } from "@ionic/react";
+import {
+  IonButton,
+  IonInput,
+  IonItem,
+  IonLabel,
+  IonRedirect,
+} from "@ionic/react";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import bottomDivImg from "../../../images/authimage.png";
 
-
 function BottomDiv() {
+  const history = useHistory();
   const handleSign = (e: any) => {
     e.preventDefault();
+    history.push("/mapboard");
     console.log("signed in");
   };
   return (

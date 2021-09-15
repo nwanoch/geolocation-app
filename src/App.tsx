@@ -29,6 +29,7 @@ import Welcome from "./pages/welcome/Welcome";
 import SignUp from "./pages/SignUp/SignUp";
 import SignIn from "./pages/SignIn/SignIn";
 import Forgot from "./pages/Forgot/Forgot";
+import Mapboard from "./pages/MapBoard/Mapboard";
 
 const App: React.FC = () => {
   return (
@@ -49,6 +50,9 @@ const App: React.FC = () => {
             </Route>
             <Route path="/forgot" exact={true}>
               <Forgot />
+            </Route>
+            <Route path="/mapboard" exact={true}>
+              <Mapboard />
             </Route>
             <Route path="/page/:name" exact={true}>
               <Page />

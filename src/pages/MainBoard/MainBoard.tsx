@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import Body from "../../components/MainBoardComponents/Body";
 
 function MainBoard() {
-    return (
-        <div>
-            
-        </div>
-    )
+  return (
+    <div>
+      <Body />
+    </div>
+  );
 }
 
-export default MainBoard
+export default MainBoard;

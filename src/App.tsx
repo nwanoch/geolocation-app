@@ -29,6 +29,7 @@ import Welcome from "./pages/welcome/Welcome";
 import SignUp from "./pages/SignUp/SignUp";
 import SignIn from "./pages/SignIn/SignIn";
 import Forgot from "./pages/Forgot/Forgot";
+import MainBoard from "./pages/MainBoard/MainBoard";
 
 const App: React.FC = () => {
   return (
@@ -41,7 +42,8 @@ const App: React.FC = () => {
               {/* <Welcome/> */}
               {/* <SignUp /> */}
               {/* <SignIn /> */}
-              <Forgot />
+              {/* <Forgot /> */}
+              <MainBoard />
               {/* <Redirect to="/login" /> */}
             </Route>
             <Route path="/page/:name" exact={true}>

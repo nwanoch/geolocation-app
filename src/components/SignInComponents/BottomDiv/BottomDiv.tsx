@@ -119,6 +119,7 @@ function BottomDiv() {
                 backgroundColor: "#fff",
                 color: "#254159",
                 border: "none",
+                textDecoration: "none",
                 borderRadius: "25px",
                 padding: "18px 70px",
                 fontSize: "12px",

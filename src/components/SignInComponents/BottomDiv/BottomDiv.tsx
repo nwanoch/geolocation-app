@@ -112,7 +112,8 @@ function BottomDiv() {
             Forgot Password
           </Link>
           <div style={{ textAlign: "center", width: "100%" }}>
-            <button
+            <Link
+              to="/mapboard"
               onClick={handleSign}
               style={{
                 backgroundColor: "#fff",
@@ -126,7 +127,7 @@ function BottomDiv() {
               }}
             >
               Sign In
-            </button>{" "}
+            </Link>{" "}
             <Link
               to="/signup"
               style={{

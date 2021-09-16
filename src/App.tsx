@@ -30,34 +30,43 @@ import SignUp from "./pages/SignUp/SignUp";
 import SignIn from "./pages/SignIn/SignIn";
 import Forgot from "./pages/Forgot/Forgot";
 import Mapboard from "./pages/MapBoard/Mapboard";
+import { AnimatePresence } from "framer-motion";
+import { useLocation } from "react-router-dom";
+import { Switch } from "react-router";
 
 const App: React.FC = () => {
+  const location = useLocation();
+
   return (
     <IonApp>
       <IonReactRouter>
         <IonSplitPane contentId="main">
           <Menu />
-          <IonRouterOutlet id="main">
-            <Route path="/" exact={true}>
-              <Welcome />
-            </Route>
-            <Route path="/signUp" exact={true}>
-              <SignUp />
-            </Route>
+          <AnimatePresence>
+            <IonRouterOutlet animated id="main">
+              <Switch>
+                <Route path="/" exact={true}>
+                  <Welcome />
+                </Route>
+                <Route path="/signUp" exact={true}>
+                  <SignUp />
+                </Route>
 
-            <Route path="/Login" exact={true}>
-              <SignIn />
-            </Route>
-            <Route path="/forgot" exact={true}>
-              <Forgot />
-            </Route>
-            <Route path="/mapboard" exact={true}>
-              <Mapboard />
-            </Route>
-            <Route path="/page/:name" exact={true}>
-              <Page />
-            </Route>
-          </IonRouterOutlet>
+                <Route path="/Login" exact={true}>
+                  <SignIn />
+                </Route>
+                <Route path="/forgot" exact={true}>
+                  <Forgot />
+                </Route>
+                <Route path="/mapboard" exact={true}>
+                  <Mapboard />
+                </Route>
+                <Route path="/page/:name" exact={true}>
+                  <Page />
+                </Route>
+              </Switch>
+            </IonRouterOutlet>
+          </AnimatePresence>
         </IonSplitPane>
       </IonReactRouter>
     </IonApp>

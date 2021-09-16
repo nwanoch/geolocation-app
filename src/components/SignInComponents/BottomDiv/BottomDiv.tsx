@@ -3,19 +3,47 @@ import {
   IonInput,
   IonItem,
   IonLabel,
+  IonLoading,
   IonRedirect,
 } from "@ionic/react";
-import React from "react";
+import React, { useState, useRef } from "react";
 import { Link, useHistory } from "react-router-dom";
 import bottomDivImg from "../../../images/authimage.png";
-
+import axios from "axios";
 function BottomDiv() {
+  const [user, setUser] = useState<any>(null);
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
   const history = useHistory();
-  const handleSign = (e: any) => {
+
+  const usernameRef = useRef<HTMLIonInputElement>(null);
+  const passwordRef = useRef<HTMLIonInputElement>(null);
+  const username = usernameRef.current?.value;
+  const password = passwordRef.current?.value;
+  const [showLoading, setShowLoading] = useState(false);
+
+  const handleSign = async (e: any) => {
+    setShowLoading(true);
+    setTimeout(() => {
+      setShowLoading(false);
+      history.push("/mapboard");
+    }, 1000);
+
+    const api = axios.create({
+      baseURL: `http://localhost:5000/api`,
+    });
     e.preventDefault();
-    history.push("/mapboard");
-    console.log("signed in");
+    api
+      .post("/login", { username, password })
+      .then((res) => {
+        history.push("/mapboard");
+        setUser(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
+
   return (
     <div
       style={{
@@ -67,9 +95,9 @@ function BottomDiv() {
                 borderBottom: "1px solid white",
                 marginBottom: "5px",
               }}
-              value=""
+              ref={usernameRef}
             ></IonInput>
-          </IonItem>{" "}
+          </IonItem>
           <IonItem lines="none" color="backgroundColor">
             <IonLabel
               style={{
@@ -83,6 +111,7 @@ function BottomDiv() {
               Enter Password
             </IonLabel>
             <IonInput
+              ref={passwordRef}
               autocomplete="off"
               style={{
                 color: "#fff",
@@ -90,7 +119,6 @@ function BottomDiv() {
                 marginBottom: "5px",
               }}
               type="password"
-              value=""
             ></IonInput>
           </IonItem>
           <Link
@@ -112,8 +140,7 @@ function BottomDiv() {
             Forgot Password
           </Link>
           <div style={{ textAlign: "center", width: "100%" }}>
-            <Link
-              to="/mapboard"
+            <button
               onClick={handleSign}
               style={{
                 backgroundColor: "#fff",
@@ -128,7 +155,7 @@ function BottomDiv() {
               }}
             >
               Sign In
-            </Link>{" "}
+            </button>
             <Link
               to="/signup"
               style={{
@@ -138,6 +165,7 @@ function BottomDiv() {
                 border: "none",
                 padding: "18px",
                 fontSize: "12px",
+                marginTop: "10px",
                 display: "block",
                 fontFamily: "'Helvetica 55 Roman', sans-serif",
                 textAlign: "center",
@@ -148,6 +176,14 @@ function BottomDiv() {
             </Link>
           </div>
         </form>
+
+        <IonLoading
+          cssClass="my-custom-class"
+          isOpen={showLoading}
+          onDidDismiss={() => setShowLoading(false)}
+          message={"Loading ..."}
+          duration={5000}
+        />
       </div>
     </div>
   );

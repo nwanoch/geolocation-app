@@ -85,7 +85,7 @@ function Body() {
       <MapGL
         style={{
           width: "100vw",
-          height: "100%",
+          height: "100vh",
           border: "0",
           position: "absolute",
           zIndex: -50,
@@ -104,7 +104,7 @@ function Body() {
           source="maine"
           paint={{
             "fill-color": "#E88530",
-            "fill-opacity": 1,
+            "fill-opacity": 0.7,
           }}
         />
         <Layer

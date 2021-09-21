@@ -19,11 +19,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "paths": {
-      "*": [
-        "src/client/@custom_types/*"
-      ]
-    }
+    "noImplicitAny":false
   },
   "include": [
     "src"

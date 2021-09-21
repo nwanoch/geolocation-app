@@ -26,7 +26,7 @@ function BottomDiv() {
     setShowLoading(true);
     setTimeout(() => {
       setShowLoading(false);
-      history.push("/mapboard");
+      history.push("/initialmapboard");
     }, 1000);
 
     const api = axios.create({

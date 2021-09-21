@@ -9,7 +9,6 @@ import MapGL, {
 import "mapbox-gl/dist/mapbox-gl.css";
 
 import locate from "../../../images/locate.png";
-import { Link } from "react-router-dom";
 function Body() {
   const [location, setLocation] = useState<any>([]);
   const [lat, setlat] = useState(3);
@@ -36,7 +35,7 @@ function Body() {
     );
   };
   useEffect(() => {
-    // getLocation();
+    getLocation();
   }, []);
   const [viewport, setViewport] = useState({
     latitude: 45.13745,
@@ -103,6 +102,25 @@ function Body() {
         zoom={viewport.zoom}
         onViewportChange={setViewport}
       >
+        <Source id="maine" type="geojson" data={data} />
+        <Layer
+          id="maine"
+          type="fill"
+          source="maine"
+          paint={{
+            "fill-color": "#E88530",
+            "fill-opacity": 0.7,
+          }}
+        />
+        <Layer
+          id="maine"
+          type="line"
+          source="maine"
+          paint={{
+            "line-width": 8,
+            "line-color": "#FF9A00",
+          }}
+        />
         <GeolocateControl
           position="top-right"
           trackUserLocation={true}
@@ -110,85 +128,27 @@ function Body() {
         />
         <NavigationControl showCompass showZoom position="top-right" />
       </MapGL>
-      <div
+      <button
+        onClick={getLocation}
         style={{
+          // backgroundColor: "#E88530",
+          border: " 3px solid #E88530",
+          color: "#E88530",
+          padding: "14px 40px",
           position: "absolute",
           bottom: "100px",
           left: "50%",
+          fontSize: "12px",
           transform: "translateX(-50%)",
-          justifyContent: "center",
-
+          zIndex: 4555,
           display: "flex",
-          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          borderRadius: "25px",
         }}
       >
-        <div
-          style={{
-            width: "80vw",
-            maxHeight: "300px",
-            overflowY: "scroll",
-            margin: "20px auto",
-            backgroundColor: "#254159",
-            textAlign: "left",
-            opacity: 0.8,
-            borderRadius: 10,
-            color: "white",
-            fontSize: "14px",
-            fontFamily: "'Helvetica 55 Roman', sans-serif",
-          }}
-        >
-          {location.map((position) => {
-            return (
-              <p style={{ padding: "5px 20px 0" }}>
-                {"Lng:" +
-                  position[0].toFixed(3) +
-                  ", " +
-                  " " +
-                  "Lat:" +
-                  position[1].toFixed(3)}
-              </p>
-            );
-          })}
-        </div>
-        <button
-          onClick={getLocation}
-          style={{
-            backgroundColor: "#E88530",
-            color: "#fff",
-            padding: "14px 20px",
-            width: "170px",
-            margin: "auto",
-            fontSize: "12px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            borderRadius: "25px",
-          }}
-        >
-          <img src={locate} alt="" style={{ marginRight: "5px" }} />
-          Pick Location
-        </button>
-        <Link
-          to="finishedMapboard"
-          onClick={getLocation}
-          style={{
-            // backgroundColor: "#E88530",
-            border: "3px solid #E88530",
-            color: "#E88530",
-            textDecoration: "none",
-            padding: "15px 20px",
-            width: "170px",
-            margin: "auto",
-            marginTop: "10px",
-            textAlign: "center",
-            fontSize: "12px",
-            borderRadius: "25px",
-            boxSizing: "border-box",
-          }}
-        >
-          See on Map
-        </Link>
-      </div>
+        Save
+      </button>
     </div>
   );
 }

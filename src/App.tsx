@@ -33,6 +33,7 @@ import Mapboard from "./pages/Mapboard";
 
 import { useLocation } from "react-router-dom";
 import { Route, Switch } from "react-router";
+import FinishedMapboard from "./pages/FinishedBoard";
 
 const App: React.FC = () => {
   const location = useLocation();
@@ -57,11 +58,11 @@ const App: React.FC = () => {
             <Route path="/forgot" exact={true}>
               <Forgot />
             </Route>
-            <Route path="/mapboard" exact={true}>
+            <Route path="/initialmapboard" exact={true}>
               <Mapboard />
             </Route>
-            <Route path="/page/:name" exact={true}>
-              <Page />
+            <Route path="/finishedMapboard" exact={true}>
+              <FinishedMapboard />
             </Route>
           </IonRouterOutlet>
         </IonSplitPane>

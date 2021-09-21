@@ -1,6 +1,11 @@
 import { IonIcon } from "@ionic/react";
 import React, { useEffect, useState } from "react";
-import MapGL, { Source, Layer } from "@urbica/react-map-gl";
+import MapGL, {
+  Source,
+  Layer,
+  GeolocateControl,
+  NavigationControl,
+} from "@urbica/react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 import locate from "../../../images/locate.png";
@@ -87,15 +92,15 @@ function Body() {
           width: "100vw",
           height: "100vh",
           border: "0",
-          position: "absolute",
-          zIndex: -50,
         }}
         mapStyle="mapbox://styles/mapbox/light-v9"
         accessToken={
           "pk.eyJ1IjoiZW1tYW51ZWxud2Fub2NoaWUiLCJhIjoiY2t0bGozd2YwMDJpcjJ1czh2aHVscmk1eCJ9.XlprBONdRkZdwS4NYdKbGw"
         }
+        latitude={viewport.latitude}
+        longitude={viewport.longitude}
+        zoom={viewport.zoom}
         onViewportChange={setViewport}
-        {...viewport}
       >
         <Source id="maine" type="geojson" data={data} />
         <Layer
@@ -112,10 +117,12 @@ function Body() {
           type="line"
           source="maine"
           paint={{
-            "line-width": 4,
+            "line-width": 8,
             "line-color": "#FF9A00",
           }}
         />
+        <GeolocateControl position="top-right" />
+        <NavigationControl showCompass showZoom position="top-right" />
       </MapGL>
       <button
         onClick={getLocation}

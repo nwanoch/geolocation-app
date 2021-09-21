@@ -15,6 +15,7 @@
     "@types/react-router": "^5.1.11",
     "@types/react-router-dom": "^5.1.7",
     "@urbica/react-map-gl": "^1.14.3",
+    "@urbica/react-map-gl-draw": "^0.3.5",
     "axios": "^0.21.4",
     "framer-motion": "^4.1.17",
     "ionicons": "^5.4.0",

@@ -21,7 +21,7 @@
     "jsx": "react-jsx",
     "paths": {
       "*": [
-        "src/client/@custom_types/*"
+        "./src/client/@custom_types/*"
       ]
     }
   },

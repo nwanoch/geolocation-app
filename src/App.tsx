@@ -1,6 +1,6 @@
 import { IonApp, IonRouterOutlet, IonSplitPane } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import { Redirect, Route } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import Menu from "./components/Menu";
 import Page from "./pages/Page";
 
@@ -25,14 +25,14 @@ import "./theme/variables.css";
 
 //components
 
-import Welcome from "./pages/welcome/Welcome";
-import SignUp from "./pages/SignUp/SignUp";
-import SignIn from "./pages/SignIn/SignIn";
-import Forgot from "./pages/Forgot/Forgot";
-import Mapboard from "./pages/MapBoard/Mapboard";
-import { AnimatePresence } from "framer-motion";
+import Welcome from "./pages/Welcome";
+import SignUp from "./pages/SignUp";
+import SignIn from "./pages/SignIn";
+import Forgot from "./pages/Forgot";
+import Mapboard from "./pages/Mapboard";
+
 import { useLocation } from "react-router-dom";
-import { Switch } from "react-router";
+import { Route, Switch } from "react-router";
 
 const App: React.FC = () => {
   const location = useLocation();
@@ -42,31 +42,28 @@ const App: React.FC = () => {
       <IonReactRouter>
         <IonSplitPane contentId="main">
           <Menu />
-          <AnimatePresence>
-            <IonRouterOutlet animated id="main">
-              <Switch>
-                <Route path="/" exact={true}>
-                  <Welcome />
-                </Route>
-                <Route path="/signUp" exact={true}>
-                  <SignUp />
-                </Route>
 
-                <Route path="/Login" exact={true}>
-                  <SignIn />
-                </Route>
-                <Route path="/forgot" exact={true}>
-                  <Forgot />
-                </Route>
-                <Route path="/mapboard" exact={true}>
-                  <Mapboard />
-                </Route>
-                <Route path="/page/:name" exact={true}>
-                  <Page />
-                </Route>
-              </Switch>
-            </IonRouterOutlet>
-          </AnimatePresence>
+          <IonRouterOutlet animated id="main">
+            <Route path="/" exact={true}>
+              <Welcome />
+            </Route>
+            <Route path="/signUp" exact={true}>
+              <SignUp />
+            </Route>
+
+            <Route path="/Login" exact={true}>
+              <SignIn />
+            </Route>
+            <Route path="/forgot" exact={true}>
+              <Forgot />
+            </Route>
+            <Route path="/mapboard" exact={true}>
+              <Mapboard />
+            </Route>
+            <Route path="/page/:name" exact={true}>
+              <Page />
+            </Route>
+          </IonRouterOutlet>
         </IonSplitPane>
       </IonReactRouter>
     </IonApp>

@@ -1,8 +1,9 @@
 import React from "react";
-import BottomDiv from "../../components/WelcomeComponents/BottomDiv/BottomDiv";
-import Greeting from "../../components/Greeting/Greeting";
-import LogoDIv from "../../components/WelcomeComponents/LogoDIv/LogoDIv";
+import BottomDiv from "../components/WelcomeComponents/BottomDiv/BottomDiv";
+import Greeting from "../components/Greeting/Greeting";
+import LogoDIv from "../components/WelcomeComponents/LogoDIv/LogoDIv";
 import { motion } from "framer-motion";
+import { IonPage } from "@ionic/react";
 const containerVariants = {
   hidden: {
     opacity: 0,
@@ -17,11 +18,11 @@ const containerVariants = {
 };
 function Welcome() {
   return (
-    <div>
+    <IonPage style={{ justifyContent: "flex-start" }}>
       <Greeting />
       <LogoDIv />
       <BottomDiv />
-    </div>
+    </IonPage>
   );
 }
 

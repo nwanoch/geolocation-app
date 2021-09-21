@@ -28,7 +28,7 @@ function BottomDiv() {
           Lets get started
         </h1>
         <Link
-          to="login"
+          to="/login"
           style={{
             backgroundColor: "#fff",
             color: "#254159",

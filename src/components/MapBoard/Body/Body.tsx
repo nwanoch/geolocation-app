@@ -170,7 +170,6 @@ function Body() {
         </button>
         <Link
           to="finishedMapboard"
-          onClick={getLocation}
           style={{
             // backgroundColor: "#E88530",
             border: "3px solid #E88530",

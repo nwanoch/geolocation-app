@@ -1,6 +1,7 @@
 import { IonButtons, IonMenuButton } from "@ionic/react";
 import React from "react";
 import gislogo from "../../../images/gislogo.png";
+import ModalExample from "./Modal";
 
 function Nav() {
   return (
@@ -20,7 +21,7 @@ function Nav() {
     >
       <IonButtons slot="end">
         <IonMenuButton
-          auto-hide="false"
+          auto-hide="true"
           style={{ color: "#4B6275", fontSize: "40px", marginLeft: "30px" }}
         ></IonMenuButton>
       </IonButtons>
@@ -33,7 +34,9 @@ function Nav() {
           width: "40px",
           marginRight: "30px",
         }}
-      ></div>
+      >
+        <ModalExample />
+      </div>
     </div>
   );
 }

@@ -1,7 +1,8 @@
 import { IonPage } from "@ionic/react";
 import React from "react";
-import Body from "../components/FinishedMapboard/Body/Body";
-import Nav from "../components/FinishedMapboard/Nav/Nav";
+import Body from "../components/FinishedMapboard/Body";
+import Nav from "../components/MapBoard/Nav/Nav";
+// import Nav from "../components/Nav/Nav";
 
 function FinishedMapboard() {
   return (

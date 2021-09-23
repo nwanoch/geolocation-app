@@ -3,13 +3,18 @@ import React from "react";
 import Body from "../components/MapBoard/Body/Body";
 import Nav from "../components/MapBoard/Nav/Nav";
 
-function Mapboard() {
+interface Iprops {
+  getLocation(): void;
+  location: string;
+}
+
+const Mapboard: React.FC<Iprops> = ({ getLocation, location }) => {
   return (
     <IonPage style={{ justifyContent: "flex-start" }}>
       <Nav />
-      <Body />
+      <Body getLocation={getLocation} location={location} />
     </IonPage>
   );
-}
+};
 
 export default Mapboard;

@@ -11,10 +11,15 @@ import {
 import { Link, useHistory } from "react-router-dom";
 import React, { useState, useRef } from "react";
 import axios from "axios";
-
+import OtpInput from "react-otp-input";
 function Verify() {
   const history = useHistory();
+  const usernameRef = useRef<HTMLIonInputElement>(null);
+  const passwordRef = useRef<HTMLIonInputElement>(null);
   const [showLoading, setShowLoading] = useState(false);
+  const username = usernameRef.current?.value;
+  const password = passwordRef.current?.value;
+  const [otp, setotp] = useState("");
   const handleVerification = (e: any) => {
     e.preventDefault();
     setShowLoading(true);
@@ -52,15 +57,37 @@ function Verify() {
             <IonCardTitle>Madison, WI</IonCardTitle>
           </IonCardHeader> */}
           <IonCardContent>
-            A One Time Password has Been sent to your registered Email or phone
-            number
-          </IonCardContent>
+            A One Time Password has Been sent to your registered Email
+          </IonCardContent>{" "}
+          <div style={{ width: "100%", textAlign: "center" }}>
+            {" "}
+            <OtpInput
+              value={otp}
+              separator={
+                <span>
+                  <strong>.</strong>
+                </span>
+              }
+              containerStyle={{
+                justifyContent: "center",
+                margin: "10px auto 20px ",
+              }}
+              inputStyle={{
+                width: "3rem",
+                height: "3rem",
+                margin: "0rem .5rem",
+                fontSize: "2rem",
+                borderRadius: 4,
+                border: "1px solid rgba(0,0,0,0.3)",
+              }}
+            />
+          </div>
           <div>
             <button
               onClick={handleVerification}
               style={{
-                backgroundColor: "#fff",
-                color: "#254159",
+                backgroundColor: "#3A5369",
+                color: "#fff",
                 border: "none",
                 borderRadius: "25px",
                 padding: "18px 70px",
@@ -69,7 +96,7 @@ function Verify() {
                 margin: "auto",
               }}
             >
-              Sign up
+              Verify
             </button>{" "}
           </div>
         </IonCard>

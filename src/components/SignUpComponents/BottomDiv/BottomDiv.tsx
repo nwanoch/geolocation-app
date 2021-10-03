@@ -173,7 +173,7 @@ function BottomDiv() {
               margin: "auto",
             }}
           >
-            Sign up
+            Next
           </button>{" "}
           <Link
             to="login"

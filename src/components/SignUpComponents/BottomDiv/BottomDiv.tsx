@@ -1,11 +1,41 @@
-import { IonButton, IonInput, IonItem, IonLabel } from "@ionic/react";
-import React from "react";
-import { Link } from "react-router-dom";
+import {
+  IonButton,
+  IonInput,
+  IonItem,
+  IonLabel,
+  IonLoading,
+} from "@ionic/react";
+import { Link, useHistory } from "react-router-dom";
 import bottomDivImg from "../../../images/authimage.png";
-
+import React, { useState, useRef } from "react";
+import axios from "axios";
 function BottomDiv() {
+  const history = useHistory();
+  const usernameRef = useRef<HTMLIonInputElement>(null);
+  const passwordRef = useRef<HTMLIonInputElement>(null);
+  const [showLoading, setShowLoading] = useState(false);
+  const username = usernameRef.current?.value;
+  const password = passwordRef.current?.value;
   const handleSignUp = (e: any) => {
     e.preventDefault();
+    setShowLoading(true);
+    setTimeout(() => {
+      setShowLoading(false);
+      history.push("/verify");
+    }, 1000);
+
+    const api = axios.create({
+      baseURL: `http://localhost:5000/api`,
+    });
+    e.preventDefault();
+    api
+      .post("/login", { username, password })
+      .then((res) => {
+        history.push("/mapboard");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <div
@@ -16,8 +46,9 @@ function BottomDiv() {
         position: "absolute",
         borderRadius: "50px 50px 0 0",
         bottom: "0",
-        height: "62vh",
+        height: "",
         width: "100%",
+        padding: "20px 0",
       }}
     >
       <div style={{ textAlign: "left", width: "85%", margin: "auto" }}>
@@ -48,7 +79,32 @@ function BottomDiv() {
             }}
             position="floating"
           >
-            Choose Username
+            Enter Name
+          </IonLabel>
+          <IonInput
+            style={{
+              color: "#fff",
+              borderBottom: "1px solid white",
+              marginBottom: "5px",
+            }}
+            value=""
+          ></IonInput>
+        </IonItem>
+        <IonItem
+          lines="none"
+          color="backgroundColor"
+          style={{ padding: "0", margin: "0" }}
+        >
+          <IonLabel
+            style={{
+              color: "#fff",
+              fontWeight: "400",
+              fontFamily: "'Helvetica 55 Roman', sans-serif",
+              fontSize: "14px",
+            }}
+            position="floating"
+          >
+            Email Address
           </IonLabel>
           <IonInput
             style={{
@@ -136,6 +192,13 @@ function BottomDiv() {
             Have an account Already? Sign in
           </Link>
         </div>
+        <IonLoading
+          cssClass="my-custom-class"
+          isOpen={showLoading}
+          onDidDismiss={() => setShowLoading(false)}
+          message={"Loading ..."}
+          duration={5000}
+        />
       </div>
     </div>
   );

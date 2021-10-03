@@ -26,7 +26,7 @@ function Nav() {
         ></IonMenuButton>
       </IonButtons>
 
-      <div style={{ padding: "10px", width: "20%" }}>
+      <div style={{ padding: "10px", maxWidth: "15%" }}>
         <img style={{ width: "100%" }} src={gislogo} alt="" />
       </div>
       <div

@@ -9,7 +9,7 @@ function Greeting() {
       const hours = date.getHours();
 
       if (hours < 12 && hours >= 0) {
-        setgreet("Good Morming");
+        setgreet("Good Morning");
       } else if (hours > 11 && hours < 16) {
         setgreet("Good Afternoon");
       } else {

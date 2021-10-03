@@ -22,7 +22,6 @@ const Body: React.FC<{
           color: "light",
           background: "#fff",
         }}
-        // fill="outline"
         color="light"
         onClick={() => onDismiss()}
       >

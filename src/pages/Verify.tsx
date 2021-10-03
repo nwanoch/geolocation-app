@@ -12,6 +12,8 @@ import { Link, useHistory } from "react-router-dom";
 import React, { useState, useRef } from "react";
 import axios from "axios";
 import OtpInput from "react-otp-input";
+import { toastError, toastSuccess } from "../components/Toast";
+import Greeting from "../components/Greeting/Greeting";
 function Verify() {
   const history = useHistory();
   const usernameRef = useRef<HTMLIonInputElement>(null);
@@ -25,7 +27,8 @@ function Verify() {
     setShowLoading(true);
     setTimeout(() => {
       setShowLoading(false);
-      history.push("/verify");
+      toastSuccess("User successfully registered");
+      history.push("/initialmapboard");
     }, 1000);
 
     const api = axios.create({
@@ -42,11 +45,14 @@ function Verify() {
       });
   };
   return (
+    // ;
+    // toastError("User is not created try again");
     <IonPage style={{ justifyContent: "flex-start" }}>
       <IonContent fullscreen>
+        <Greeting />
         <IonCard
           style={{
-            marginTop: "50%",
+            margin: "50% 25px 0",
             transform: "translateY(-50%)",
             alignItem: "center",
             padding: "30px",
@@ -63,9 +69,12 @@ function Verify() {
             {" "}
             <OtpInput
               value={otp}
+              onChange={(otp) => {
+                setotp(otp);
+              }}
               separator={
                 <span>
-                  <strong>.</strong>
+                  <strong></strong>
                 </span>
               }
               containerStyle={{

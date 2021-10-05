@@ -33,4 +33,4 @@ export const toastDefault = (message) => {
   toast(message, options);
 };
 
-// wherever in need that toast use like this
+

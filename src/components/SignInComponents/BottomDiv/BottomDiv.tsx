@@ -10,6 +10,15 @@ import React, { useState, useRef } from "react";
 import { Link, useHistory } from "react-router-dom";
 import bottomDivImg from "../../../images/authimage.png";
 import axios from "axios";
+import { Field, Form, Formik } from "formik";
+import {
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+} from "@chakra-ui/form-control";
+import { Input, Button } from "@chakra-ui/react";
+import { dispatch } from "react-hot-toast/dist/core/store";
+import { login } from "../../../redux/action/action";
 function BottomDiv() {
   const [user, setUser] = useState<any>(null);
   const [error, setError] = useState(false);
@@ -22,28 +31,13 @@ function BottomDiv() {
   const password = passwordRef.current?.value;
   const [showLoading, setShowLoading] = useState(false);
 
-  const handleSign = async (e: any) => {
-    setShowLoading(true);
-    setTimeout(() => {
-      setShowLoading(false);
-      history.push("/initialmapboard");
-    }, 1000);
-
-    const api = axios.create({
-      baseURL: `http://localhost:5000/api`,
-    });
-    e.preventDefault();
-    api
-      .post("/login", { username, password })
-      .then((res) => {
-        history.push("/mapboard");
-        setUser(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
+  function validateField(value: any) {
+    let error;
+    if (!value) {
+      error = "This field is required";
+    }
+    return error;
+  }
   return (
     <div
       style={{
@@ -51,7 +45,7 @@ function BottomDiv() {
         backgroundPosition: "center",
         backgroundSize: "cover",
         position: "absolute",
-        borderRadius: "50px 50px 0 0",
+        borderRadius: "40px 40px 0 0",
         bottom: "0",
         height: "62vh",
         width: "100%",
@@ -71,119 +65,73 @@ function BottomDiv() {
           Log <br />
           In
         </h1>
-        <form action="">
-          {" "}
-          <IonItem
-            lines="none"
-            color="backgroundColor"
-            style={{ padding: "0", margin: "0" }}
-          >
-            <IonLabel
-              style={{
-                color: "#fff",
-                fontWeight: "400",
-                fontFamily: "'Helvetica 55 Roman', sans-serif",
-                fontSize: "14px",
-              }}
-              position="floating"
-            >
-              Enter Username
-            </IonLabel>
-            <IonInput
-              style={{
-                color: "#fff",
-                borderBottom: "1px solid white",
-                marginBottom: "5px",
-              }}
-              ref={usernameRef}
-            ></IonInput>
-          </IonItem>
-          <IonItem lines="none" color="backgroundColor">
-            <IonLabel
-              style={{
-                color: "#fff",
-                fontWeight: "400",
-                fontFamily: "'Helvetica 55 Roman', sans-serif",
-                fontSize: "14px",
-              }}
-              position="floating"
-            >
-              Enter Password
-            </IonLabel>
-            <IonInput
-              ref={passwordRef}
-              autocomplete="off"
-              style={{
-                color: "#fff",
-                borderBottom: "1px solid white",
-                marginBottom: "5px",
-              }}
-              type="password"
-            ></IonInput>
-          </IonItem>
-          <Link
-            to="/forgot"
-            style={{
-              background: "none",
-              color: "#fff",
-              width: "100%",
-              border: "none",
-              padding: "18px",
-              fontSize: "12px",
-              display: "block",
-              fontFamily: "'Helvetica 55 Roman', sans-serif",
-              textAlign: "right",
-              marginBottom: "20px",
-              textDecoration: "none",
-            }}
-          >
-            Forgot Password
-          </Link>
-          <div style={{ textAlign: "center", width: "100%" }}>
-            <button
-              onClick={handleSign}
-              style={{
-                backgroundColor: "#fff",
-                color: "#254159",
-                border: "none",
-                textDecoration: "none",
-                borderRadius: "25px",
-                padding: "18px 70px",
-                fontSize: "12px",
-                display: "block",
-                margin: "auto",
-              }}
-            >
-              Sign In
-            </button>
-            <Link
-              to="/signup"
-              style={{
-                background: "none",
-                color: "#fff",
-                width: "100%",
-                border: "none",
-                padding: "18px",
-                fontSize: "12px",
-                marginTop: "10px",
-                display: "block",
-                fontFamily: "'Helvetica 55 Roman', sans-serif",
-                textAlign: "center",
-                textDecoration: "none",
-              }}
-            >
-              Don’t have an account? Sign Up
-            </Link>
-          </div>
-        </form>
-
-        <IonLoading
-          cssClass="my-custom-class"
-          isOpen={showLoading}
-          onDidDismiss={() => setShowLoading(false)}
-          message={"Loading ..."}
-          duration={5000}
-        />
+        <Formik initialValues={{}} onSubmit={(values, actions) => {}}>
+          {(props) => (
+            <Form>
+              <Field name="username" validate={validateField}>
+                {({ field, form }) => (
+                  <FormControl
+                    isInvalid={form.errors.username && form.touched.username}
+                  >
+                    <FormLabel htmlFor="username" color="#fff" mt="15px">
+                      UserName
+                    </FormLabel>
+                    <Input
+                      {...field}
+                      id="username"
+                      color="#fff"
+                      placeholder="Enter username"
+                    />
+                    <FormErrorMessage>{form.errors.username}</FormErrorMessage>
+                  </FormControl>
+                )}
+              </Field>
+              <Field name="password" validate={validateField}>
+                {({ field, form }) => (
+                  <FormControl
+                    mt="15px"
+                    isInvalid={form.errors.password && form.touched.password}
+                  >
+                    <FormLabel htmlFor="password" color="#fff">
+                      Passcode
+                    </FormLabel>
+                    <Input
+                      {...field}
+                      color="#fff"
+                      id="password"
+                      placeholder="Enter Passcode"
+                    />
+                    <FormErrorMessage>{form.errors.password}</FormErrorMessage>
+                  </FormControl>
+                )}
+              </Field>{" "}
+              <div
+                style={{
+                  textAlign: "center",
+                  width: "100%",
+                  marginTop: "20px",
+                }}
+              >
+                <Button
+                  mt={4}
+                  bg="white"
+                  colorScheme="whiteAlpha"
+                  isLoading={props.isSubmitting}
+                  onClick={() => {
+                    console.log(props.values);
+                    history.push("/home")
+                  }}
+                  color="#254159"
+                  mx="auto"
+                  padding="18px 70px"
+                  fontSize="14px"
+                >
+                  Submit
+                </Button>
+              </div>
+            </Form>
+          )}
+        </Formik>
       </div>
     </div>
   );

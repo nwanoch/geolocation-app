@@ -36,6 +36,7 @@ import Mapboard from "./pages/Mapboard";
 import FinishedMapboard from "./pages/FinishedBoard";
 import Verify from "./pages/Verify";
 import Home from "./pages/Home";
+import CreateRole from "./pages/CreateRole";
 
 const App: React.FC = () => {
   const [location, setLocation] = useState<any>([]);
@@ -78,12 +79,15 @@ const App: React.FC = () => {
             <Route path="/" exact={true}>
               <Redirect to="/login" />
             </Route>
-            <Route path="/signUp" exact={true}>
-              <SignUp />
-            </Route>
+
             <Route path="/Login" exact={true}>
               <SignIn />
             </Route>
+
+            <Route path="/create-role" exact={true}>
+              <CreateRole />
+            </Route>
+
             <Route path="/forgot" exact={true}>
               <Forgot />
             </Route>

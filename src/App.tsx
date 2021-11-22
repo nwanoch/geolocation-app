@@ -37,6 +37,7 @@ import FinishedMapboard from "./pages/FinishedBoard";
 import Verify from "./pages/Verify";
 import Home from "./pages/Home";
 import CreateRole from "./pages/CreateRole";
+import AdminSupervisor from "./pages/AdminSupervisor";
 
 const App: React.FC = () => {
   const [location, setLocation] = useState<any>([]);
@@ -86,6 +87,10 @@ const App: React.FC = () => {
 
             <Route path="/create-role" exact={true}>
               <CreateRole />
+            </Route>
+
+            <Route path="/manage-supervisor" exact={true}>
+              <AdminSupervisor />
             </Route>
 
             <Route path="/forgot" exact={true}>

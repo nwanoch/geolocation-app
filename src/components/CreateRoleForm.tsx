@@ -19,7 +19,7 @@ function CreateRoleForm() {
         Back
       </Link>
       <Text textAlign="center" mt="15px" color="#254159">
-        Role Details
+        Create Role
       </Text>
       <Formik
         initialValues={{ name: "" }}

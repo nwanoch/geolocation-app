@@ -1,6 +1,6 @@
 import { Button, ButtonGroup } from "@chakra-ui/button";
 import Icon from "@chakra-ui/icon";
-import { Box, Flex, Link, Stack } from "@chakra-ui/layout";
+import { Box, Flex, Link, Stack, Text } from "@chakra-ui/layout";
 import { IonContent, IonPage, IonRouterLink } from "@ionic/react";
 import { arrowForwardCircleOutline } from "ionicons/icons";
 import React from "react";
@@ -19,14 +19,46 @@ const AdminHome: React.FC = () => {
     <Box bg="white" minH="100vh">
       <Greeting />
       <Flex direction="column" justify="center" mt="50px">
-        <Stack direction="column" spacing={4} w="50%" mx="auto">
+        <Flex justify="space-between" mb="40px" px="30px">
+          <Flex
+            w="45%"
+            py="30px"
+            bg="#254159"
+            direction="column"
+            justify="center"
+            rounded="md"
+          >
+            <Text textAlign="center" fontWeight="400">
+              Supervisors
+            </Text>
+            <Text as="h1" mt="5px" fontSize="lg" textAlign="center">
+              22
+            </Text>
+          </Flex>
+          <Flex
+            w="45%"
+            rounded="md"
+            py="30px"
+            bg="teal"
+            direction="column"
+            justify="center"
+          >
+            <Text as="h2" textAlign="center">
+              Mappers
+            </Text>
+            <Text as="h1" mt="5px" fontSize="lg" textAlign="center">
+              1122
+            </Text>
+          </Flex>
+        </Flex>
+        <Stack direction="column" spacing={4} w="60%" mx="auto">
           <Button
             colorScheme="blue"
             variant="outline"
             color="#254159"
             borderColor="#254159"
             onClick={() => {
-              console.log("clicked");
+              console.log("create clicked");
               history.push("/create-role");
             }}
           >

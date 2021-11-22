@@ -13,7 +13,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import Greeting from "./Greeting/Greeting";
 
-function ManageSupervisor() {
+function ManageMapper() {
   return (
     <Box minH="100vh" bg="white">
       <Greeting />
@@ -22,7 +22,7 @@ function ManageSupervisor() {
           Back
         </Link>
         <Text textAlign="center" mt="15px" color="#254159">
-          Manage Supervisors
+          Manage Mapper
         </Text>{" "}
         <Flex
           justify="space-between"
@@ -32,7 +32,7 @@ function ManageSupervisor() {
           pb="20px"
         >
           <Text w="70%" color="grey" textAlign="left">
-            Supervisor Details
+            Mapper Details
           </Text>{" "}
           <Text w="30%" color="grey" textAlign="center">
             Action
@@ -77,4 +77,4 @@ function ManageSupervisor() {
   );
 }
 
-export default ManageSupervisor;
+export default ManageMapper;

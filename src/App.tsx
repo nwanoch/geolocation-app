@@ -38,6 +38,7 @@ import Verify from "./pages/Verify";
 import Home from "./pages/Home";
 import CreateRole from "./pages/CreateRole";
 import AdminSupervisor from "./pages/AdminSupervisor";
+import AdminMapper from "./pages/AdminMapper";
 
 const App: React.FC = () => {
   const [location, setLocation] = useState<any>([]);
@@ -91,6 +92,10 @@ const App: React.FC = () => {
 
             <Route path="/manage-supervisor" exact={true}>
               <AdminSupervisor />
+            </Route>
+
+            <Route path="/manage-mapper" exact={true}>
+              <AdminMapper />
             </Route>
 
             <Route path="/forgot" exact={true}>

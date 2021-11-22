@@ -2,23 +2,21 @@ import Icon from "@chakra-ui/icon";
 import { IonContent, IonPage, IonRouterLink } from "@ionic/react";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import AdminHome from "./AdminHome";
-import SupervisorHome from "./SupervisorHome";
+import CreateTaskScreen from "../components/CreateTask";
+import Greeting from "../components/Greeting/Greeting";
 
-const Home: React.FC = () => {
+const CreateTask: React.FC = () => {
   // all my states
   const state = useSelector((state: any) => state);
   const user = state.user;
 
-  console.log(user);
   return (
     <IonPage>
       <IonContent fullscreen>
-        {/* <AdminHome /> */}
-        <SupervisorHome />
+        <CreateTaskScreen />
       </IonContent>
     </IonPage>
   );
 };
 
-export default Home;
+export default CreateTask;

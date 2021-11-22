@@ -1,15 +1,6 @@
 import { Button } from "@chakra-ui/button";
-import { Box, Divider, Flex, Link, Text } from "@chakra-ui/layout";
-import {
-  Table,
-  TableCaption,
-  Tbody,
-  Td,
-  Th,
-  Thead,
-  Tr,
-} from "@chakra-ui/table";
-import React from "react";
+import { Box, Flex, Link, Text } from "@chakra-ui/layout";
+ 
 import { NavLink } from "react-router-dom";
 import Greeting from "./Greeting/Greeting";
 

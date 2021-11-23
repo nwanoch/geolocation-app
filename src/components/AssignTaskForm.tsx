@@ -4,22 +4,21 @@ import {
   FormErrorMessage,
   FormLabel,
 } from "@chakra-ui/form-control";
-import { Input, InputGroup, InputRightElement } from "@chakra-ui/input";
-import { Box, Flex, Link, Text } from "@chakra-ui/layout";
+import { Box, Link, Text } from "@chakra-ui/layout";
 import { Select } from "@chakra-ui/select";
 import { Field, Form, Formik } from "formik";
 import React from "react";
 import { NavLink } from "react-router-dom";
-function CreateTaskForm() {
-  const [show, setShow] = React.useState(false);
-  const handleClick = () => setShow(!show);
+import { validateField } from "./CreateRoleForm";
+
+function AssignTaskForm() {
   return (
     <Box px="30px">
       <Link color="grey" to="/home" as={NavLink}>
         Back
       </Link>
       <Text textAlign="center" mt="15px" color="#254159">
-        Create Task
+        Assign Task
       </Text>
       <Formik
         initialValues={{}}
@@ -32,53 +31,31 @@ function CreateTaskForm() {
       >
         {(props) => (
           <Form>
-            <Field name="taskTitle" validate={validateField}>
+            <Field name="taskId" validate={validateField}>
               {({ field, form }) => (
                 <FormControl
-                  isInvalid={form.errors.taskTitle && form.touched.taskTitle}
+                  isInvalid={form.errors.taskId && form.touched.taskId}
                 >
-                  <FormLabel htmlFor="taskTitle" color="gray" mt="30px">
-                    Task Title
+                  <FormLabel htmlFor="taskId" color="gray" mt="20px">
+                    Task
                   </FormLabel>
-                  <Input
-                    variant="outline"
-                    colorScheme="blackAlpha"
-                    size="md"
-                    color="grey"
+                  <Select
+                    id="taskId"
                     {...field}
+                    placeholder="Select Task"
+                    color="grey"
+                    size="md"
+                    fontSize="12px"
                     _placeholder={{ fontSize: "12px" }}
-                    id="taskTitle"
-                    placeholder="e.g ojota farm mapping"
-                  />
-                  <FormErrorMessage>{form.errors.taskTitle}</FormErrorMessage>
+                  >
+                    <option value="mapper1">task 1</option>
+                    <option value="mapper2">task 2</option>
+                  </Select>
+                  <FormErrorMessage>{form.errors.taskId}</FormErrorMessage>
                 </FormControl>
               )}
-            </Field>{" "}
-            <Field name="description" validate={validateField}>
-              {({ field, form }) => (
-                <FormControl
-                  isInvalid={
-                    form.errors.description && form.touched.description
-                  }
-                >
-                  <FormLabel htmlFor="address" color="gray" mt="20px">
-                    Description
-                  </FormLabel>
-                  <Input
-                    variant="outline"
-                    colorScheme="blackAlpha"
-                    size="md"
-                    color="grey"
-                    {...field}
-                    id="description"
-                    type="text"
-                    _placeholder={{ fontSize: "12px" }}
-                    placeholder="Enter Task details"
-                  />
-                  <FormErrorMessage>{form.errors.description}</FormErrorMessage>
-                </FormControl>
-              )}
-            </Field>{" "}
+            </Field>
+
             <Field name="mapper" validate={validateField}>
               {({ field, form }) => (
                 <FormControl
@@ -112,7 +89,7 @@ function CreateTaskForm() {
                 type="submit"
                 bg="#254159"
               >
-                Create
+                Assign
               </Button>
             </Box>
           </Form>
@@ -122,22 +99,4 @@ function CreateTaskForm() {
   );
 }
 
-export default CreateTaskForm;
-
-export function validateField(value) {
-  let error;
-  if (!value) {
-    error = "Field is required";
-  }
-  return error;
-}
-
-export function validateEmail(values) {
-  let error;
-  if (!values) {
-    error = "Email Required";
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values)) {
-    error = "Invalid email address";
-  }
-  return error;
-}
+export default AssignTaskForm;

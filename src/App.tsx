@@ -40,6 +40,8 @@ import CreateRole from "./pages/CreateRole";
 import AdminSupervisor from "./pages/AdminSupervisor";
 import AdminMapper from "./pages/AdminMapper";
 import CreateTask from "./pages/CreateTask";
+import SupervisorViewTasks from "./pages/SupervisorViewTasks";
+import AssignTask from "./pages/AssignTask";
 
 const App: React.FC = () => {
   const [location, setLocation] = useState<any>([]);
@@ -87,6 +89,10 @@ const App: React.FC = () => {
               <SignIn />
             </Route>
 
+            <Route path="/assign-task" exact={true}>
+              <AssignTask />
+            </Route>
+
             <Route path="/create-role" exact={true}>
               <CreateRole />
             </Route>
@@ -97,6 +103,10 @@ const App: React.FC = () => {
 
             <Route path="/manage-supervisor" exact={true}>
               <AdminSupervisor />
+            </Route>
+
+            <Route path="/view-task" exact={true}>
+              <SupervisorViewTasks />
             </Route>
 
             <Route path="/manage-mapper" exact={true}>

@@ -78,6 +78,18 @@ const SupervisorHome: React.FC = () => {
             Create new Task
           </Button>
           <Button
+            colorScheme="blue"
+            variant="outline"
+            color="#254159"
+            borderColor="#254159"
+            onClick={() => {
+              console.log("create clicked");
+              history.push("/assign-task");
+            }}
+          >
+            Assign Task
+          </Button>
+          <Button
             onClick={() => {
               console.log("clicked");
               history.push("/view-task");

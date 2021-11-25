@@ -11,7 +11,7 @@ import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { Toaster } from "react-hot-toast";
 import { mainReducer } from "./redux/reducer/mainReducer";
 
-const store = createStore(
+const store: any = createStore(
   mainReducer,
   composeWithDevTools(applyMiddleware(thunk))
 );

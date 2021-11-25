@@ -3,6 +3,7 @@ import { IonContent, IonPage, IonRouterLink } from "@ionic/react";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AdminHome from "./AdminHome";
+import MapperHome from "./MapperHome";
 import SupervisorHome from "./SupervisorHome";
 
 const Home: React.FC = () => {
@@ -15,7 +16,8 @@ const Home: React.FC = () => {
     <IonPage>
       <IonContent fullscreen>
         {/* <AdminHome /> */}
-        <SupervisorHome />
+        {/* <SupervisorHome /> */}
+        <MapperHome />
       </IonContent>
     </IonPage>
   );

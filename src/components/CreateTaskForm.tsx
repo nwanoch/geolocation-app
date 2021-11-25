@@ -79,30 +79,6 @@ function CreateTaskForm() {
                 </FormControl>
               )}
             </Field>{" "}
-            <Field name="mapper" validate={validateField}>
-              {({ field, form }) => (
-                <FormControl
-                  isInvalid={form.errors.mapper && form.touched.mapper}
-                >
-                  <FormLabel htmlFor="role" color="gray" mt="20px">
-                    Assign Mapper
-                  </FormLabel>
-                  <Select
-                    id="mapper"
-                    {...field}
-                    placeholder="Select Mapper"
-                    color="grey"
-                    size="md"
-                    fontSize="12px"
-                    _placeholder={{ fontSize: "12px" }}
-                  >
-                    <option value="mapper1">mapper 1</option>
-                    <option value="mapper2">mapper 2</option>
-                  </Select>
-                  <FormErrorMessage>{form.errors.mapper}</FormErrorMessage>
-                </FormControl>
-              )}
-            </Field>
             <Box textAlign="center" mt="20px">
               {" "}
               <Button

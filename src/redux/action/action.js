@@ -1,6 +1,5 @@
 import Axios from "axios";
-import toast from "react-hot-toast";
-import { Redirect, useHistory } from "react-router";
+import toast from "react-hot-toast"; 
 import history from "../../history";
 
 //enpoint base Url
@@ -39,3 +38,4 @@ export const login = (values) => {
       });
   };
 };
+

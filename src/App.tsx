@@ -26,9 +26,6 @@ import "@ionic/react/css/display.css";
 import "./theme/variables.css";
 
 //components
-
-import Welcome from "./pages/Welcome";
-import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import Forgot from "./pages/Forgot";
 import Mapboard from "./pages/Mapboard";
@@ -42,8 +39,13 @@ import AdminMapper from "./pages/AdminMapper";
 import CreateTask from "./pages/CreateTask";
 import SupervisorViewTasks from "./pages/SupervisorViewTasks";
 import AssignTask from "./pages/AssignTask";
+import PendingTasks from "./pages/PendingTasks";
+import InspectionTasks from "./pages/InspectionTasks";
+import { useDispatch } from "react-redux";
+import MapperUpload from "./pages/MapperUpload";
 
 const App: React.FC = () => {
+  const dispatch = useDispatch();
   const [location, setLocation] = useState<any>([]);
   const [lat, setlat] = useState(3);
   const [long, setlong] = useState(5);
@@ -55,9 +57,13 @@ const App: React.FC = () => {
           ...location,
           [position.coords.longitude, position.coords.latitude],
         ]);
+
+        dispatch({
+          type: "NEW_LOCATION",
+          location: [position.coords.longitude, position.coords.latitude],
+        });
         setlat(position.coords.latitude);
         setlong(position.coords.longitude);
-        console.log(location);
       },
       (err) => {
         console.log(err);
@@ -85,12 +91,24 @@ const App: React.FC = () => {
               <Redirect to="/login" />
             </Route>
 
-            <Route path="/Login" exact={true}>
+            <Route path="/login" exact={true}>
               <SignIn />
+            </Route>
+
+            <Route path="/upload" exact={true}>
+              <MapperUpload />
             </Route>
 
             <Route path="/assign-task" exact={true}>
               <AssignTask />
+            </Route>
+
+            <Route path="/pending-task" exact={true}>
+              <PendingTasks />
+            </Route>
+
+            <Route path="/inspection-task" exact={true}>
+              <InspectionTasks />
             </Route>
 
             <Route path="/create-role" exact={true}>

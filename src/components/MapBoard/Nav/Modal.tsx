@@ -48,8 +48,6 @@ const ModalExample: React.FC = () => {
     <IonPage
       style={{
         width: "100%",
-
-        // color: "#254159",
       }}
     >
       <p
@@ -61,9 +59,9 @@ const ModalExample: React.FC = () => {
           color: "#fff",
           fontSize: "17px",
           fontFamily: "'Helvetica 55 Roman', sans-serif",
-          margin: " 28px 30px 0",
-          padding: "5px 10px",
-          borderRadius: "50%",
+          margin: " 20px 30px 0",
+          padding: "3px 10px",
+          borderRadius: "100%",
         }}
         onClick={() => {
           present({

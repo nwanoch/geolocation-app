@@ -7,9 +7,17 @@ import MapGL, {
   NavigationControl,
 } from "@urbica/react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-
 import locate from "../../../images/locate.png";
-function Body({ data }) {
+import { useSelector } from "react-redux";
+import shpwrite from "shp-write";
+import { useHistory } from "react-router";
+import { Button } from "@chakra-ui/button";
+
+function Body() {
+  const history = useHistory();
+  const state = useSelector((state): any => state);
+  const location = state.location;
+
   const [lat, setlat] = useState(3);
   const [long, setlong] = useState(5);
 
@@ -17,34 +25,10 @@ function Body({ data }) {
     type: "Feature",
     geometry: {
       type: "Polygon",
-      coordinates: [
-        [
-          [-67.13734, 45.13745],
-          [-66.96466, 44.8097],
-          [-68.03252, 44.3252],
-          [-69.06, 43.98],
-          [-70.11617, 43.68405],
-          [-70.64573, 43.09008],
-          [-70.75102, 43.08003],
-          [-70.79761, 43.21973],
-          [-70.98176, 43.36789],
-          [-70.94416, 43.46633],
-          [-71.08482, 45.30524],
-          [-70.66002, 45.46022],
-          [-70.30495, 45.91479],
-          [-70.00014, 46.69317],
-          [-69.23708, 47.44777],
-          [-68.90478, 47.18479],
-          [-68.2343, 47.35462],
-          [-67.79035, 47.06624],
-          [-67.79141, 45.70258],
-          [-67.13734, 45.13745],
-        ],
-      ],
+      coordinates: [location],
     },
   };
   const getLocation = () => {
-    console.log(data);
     navigator.geolocation.getCurrentPosition(
       (position) => {
         setlat(position.coords.latitude);
@@ -67,7 +51,15 @@ function Body({ data }) {
     zoom: 5,
   });
 
-  // };
+  var options = {
+    folder: "myshapes",
+    types: {
+      point: "mypoints",
+      polygon: "mypolygons",
+      line: "mylines",
+    },
+  };
+
   return (
     <div
       style={{
@@ -85,8 +77,8 @@ function Body({ data }) {
         accessToken={
           "pk.eyJ1IjoiZW1tYW51ZWxud2Fub2NoaWUiLCJhIjoiY2t0bGozd2YwMDJpcjJ1czh2aHVscmk1eCJ9.XlprBONdRkZdwS4NYdKbGw"
         }
-        latitude={45.13745}
-        longitude={-67.13734}
+        latitude={lat}
+        longitude={long}
         zoom={viewport.zoom}
         onViewportChange={setViewport}
       >
@@ -101,7 +93,7 @@ function Body({ data }) {
           }}
         />
         <Layer
-          id="maine"
+          id="main"
           type="line"
           source="maine"
           paint={{
@@ -116,12 +108,25 @@ function Body({ data }) {
         />
         <NavigationControl showCompass showZoom position="top-right" />
       </MapGL>
-      <button
-        onClick={getLocation}
+      <Button
+        isDisabled={location.length < 3}
+        onClick={() => {
+          shpwrite.download(
+            {
+              type: "FeatureCollection",
+              features: [datas],
+            },
+            options
+          );
+
+          setTimeout(() => {
+            history.push("/home");
+          }, 3000);
+        }}
         style={{
-          // backgroundColor: "#E88530",
           border: " 3px solid #E88530",
-          color: "#E88530",
+          color: "#fff",
+          backgroundColor: "#E88530",
           padding: "14px 40px",
           position: "absolute",
           bottom: "100px",
@@ -136,7 +141,7 @@ function Body({ data }) {
         }}
       >
         Save
-      </button>
+      </Button>
     </div>
   );
 }

@@ -1,16 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { IonIcon } from "@ionic/react";
+import { useEffect, useState } from "react";
 import MapGL, {
-  Source,
-  Layer,
   GeolocateControl,
   NavigationControl,
 } from "@urbica/react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-
 import locate from "../../../images/locate.png";
 import { Link } from "react-router-dom";
+import { Box, Flex } from "@chakra-ui/layout";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+
 function Body({ getLocation, location }) {
+  const history = useHistory();
+  const state = useSelector((state): any => state);
+  const locations = state.location;
+
+  const dispatch = useDispatch();
+
   const [lat, setlat] = useState(3);
   const [long, setlong] = useState(5);
 
@@ -30,6 +36,7 @@ function Body({ getLocation, location }) {
   };
   useEffect(() => {
     getLlocation();
+    dispatch({ type: "RESET" });
   }, []);
   const [viewport, setViewport] = useState({
     latitude: lat,
@@ -38,12 +45,7 @@ function Body({ getLocation, location }) {
   });
 
   return (
-    <div
-      style={{
-        height: "90vh",
-        width: "100vw",
-      }}
-    >
+    <Box minH="90vh">
       <MapGL
         style={{
           width: "100%",
@@ -73,7 +75,6 @@ function Body({ getLocation, location }) {
           left: "50%",
           transform: "translateX(-50%)",
           justifyContent: "center",
-
           display: "flex",
           flexDirection: "column",
         }}
@@ -93,7 +94,7 @@ function Body({ getLocation, location }) {
             fontFamily: "'Helvetica 55 Roman', sans-serif",
           }}
         >
-          {location.map((position) => {
+          {locations.map((position) => {
             return (
               <p style={{ padding: "5px 20px 0" }}>
                 {"Lng:" +
@@ -106,45 +107,93 @@ function Body({ getLocation, location }) {
             );
           })}
         </div>
-        <button
-          onClick={getLocation}
-          style={{
-            backgroundColor: "#E88530",
-            color: "#fff",
-            padding: "14px 20px",
-            width: "170px",
-            margin: "auto",
-            fontSize: "12px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            borderRadius: "25px",
-          }}
-        >
-          <img src={locate} alt="" style={{ marginRight: "5px" }} />
-          Pick Location
-        </button>
-        <Link
-          to="finishedMapboard"
-          style={{
-            // backgroundColor: "#E88530",
-            border: "3px solid #E88530",
-            color: "#E88530",
-            textDecoration: "none",
-            padding: "15px 20px",
-            width: "170px",
-            margin: "auto",
-            marginTop: "10px",
-            textAlign: "center",
-            fontSize: "12px",
-            borderRadius: "25px",
-            boxSizing: "border-box",
-          }}
-        >
-          See on Map
-        </Link>
+        <Flex justify="space-between">
+          <button
+            onClick={getLocation}
+            style={{
+              backgroundColor: "#E88530",
+              color: "#fff",
+              padding: "10px 10px",
+              width: "130px",
+              margin: "auto",
+              fontSize: "12px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: "25px",
+            }}
+          >
+            <img src={locate} alt="" style={{ marginRight: "5px" }} />
+            Pick Location
+          </button>
+          <button
+            onClick={() => {
+              dispatch({ type: "RESET" });
+            }}
+            style={{
+              backgroundColor: "#fff",
+              color: "#E88530",
+              border: "2px solid #E88530",
+
+              padding: "10px 10px",
+              width: "130px",
+              margin: "auto",
+              fontSize: "12px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: "25px",
+            }}
+          >
+            Reset
+          </button>
+        </Flex>
+
+        <Flex mt="10px" justify="space-between">
+          {" "}
+          <button
+            onClick={() => {
+              history.push("/finishedMapboard");
+            }}
+            style={{
+              backgroundColor: "#254159",
+              color: "#fff",
+              padding: "10px 10px",
+              width: "130px",
+              margin: "auto",
+              fontSize: "12px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: "25px",
+            }}
+          >
+            Finish
+          </button>
+          <button
+            onClick={() => {
+              dispatch({ type: "UNDO" });
+            }}
+            style={{
+              backgroundColor: "#fff",
+              color: "#254159",
+              border: "2px solid #254159",
+
+              padding: "10px 10px",
+              width: "130px",
+              margin: "auto",
+              fontSize: "12px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: "25px",
+            }}
+          >
+            Undo
+          </button>
+        </Flex>
       </div>
-    </div>
+    </Box>
   );
 }
 

@@ -63,7 +63,7 @@ function Verify() {
             A One Time Password has Been sent to your registered Email
           </IonCardContent>{" "}
           <div style={{ width: "100%", textAlign: "center" }}>
-            {" "}
+      
             <OtpInput
               value={otp}
               onChange={(otp) => {

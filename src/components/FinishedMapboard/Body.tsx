@@ -140,7 +140,7 @@ function Body() {
           borderRadius: "25px",
         }}
       >
-        Save
+        Download
       </Button>
     </div>
   );

@@ -58,10 +58,7 @@ function Verify() {
             padding: "30px",
           }}
         >
-          {/* <IonCardHeader>
-            <IonCardSubtitle>Destination</IonCardSubtitle>
-            <IonCardTitle>Madison, WI</IonCardTitle>
-          </IonCardHeader> */}
+         
           <IonCardContent>
             A One Time Password has Been sent to your registered Email
           </IonCardContent>{" "}

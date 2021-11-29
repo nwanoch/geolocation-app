@@ -49,19 +49,7 @@ function InspecpectionModal() {
             <Text mt="15px">Your Comment: Nill</Text>
 
             <Box textAlign="center" mt="50px">
-              {/* <Button
-                colorScheme="teal"
-                rounded="full"
-                onClick={() => {
-                  console.log("create clicked");
-                  onClose();
-                  setTimeout(() => {
-                    history.push("/initialmapboard");
-                  }, 10);
-                }}
-              >
-                Go to Inspect
-              </Button> */}
+           
             </Box>
           </ModalBody>
         </ModalContent>

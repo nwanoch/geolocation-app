@@ -17,7 +17,7 @@ const Home: React.FC = () => {
       <IonContent fullscreen>
         {/* <AdminHome /> */}
         {/* <SupervisorHome /> */}
-        <MapperHome />
+        {/* <MapperHome /> */}
       </IonContent>
     </IonPage>
   );

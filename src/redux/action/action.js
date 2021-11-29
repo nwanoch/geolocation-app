@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import history from "../../history";
 
 //enpoint base Url
-const baseUrl = "https://paygo.gitit-tech.com";
+const baseUrl = "";
 
 //login action
 export const login = (values) => {
@@ -21,7 +21,7 @@ export const login = (values) => {
 
     Axios(options)
       .then((response) => {
-        console.log(response.data);
+      
         window.localStorage.setItem("accessToken", response.data.authorization);
         dispatch({ type: "USER", payload: response.data });
         history.push("/dashboard");
